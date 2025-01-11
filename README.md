@@ -1,62 +1,114 @@
-# Step By Step Guide Line:
-## Step 1: Set Up the Development Environment
-### Install Required Tools:
-    Python , Node.js, Git, Docker 
+# Research Paper Finder
 
-### Organize the Project Directory:
-    ResearchFinder/
-        ├── backend/     # Backend API
-        ├── frontend/    # Web frontend
-        ├── mobile-app/  # Mobile app
-        └── README.md    # Documentation
+A modern web application that helps researchers find and explore academic papers efficiently. The application provides a user-friendly interface to search through academic papers, filter results, and view detailed information including abstracts.
 
+## Features
 
+- **Advanced Search**: Search for research papers using keywords, titles, or authors
+- **Filtering Options**: 
+  - Filter by publication year (2024-2025)
+  - Customize number of results (default: 10)
+- **Paper Details**:
+  - View paper titles and URLs
+  - Toggle abstract visibility
+  - Clean and intuitive interface
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
 
-'''
-    cd ResearchFinder
-    git init
-'''
+## Technology Stack
 
-## Step 2: Backend Development
-### 2.1 Set Up the Backend
+### Backend
+- FastAPI (Python)
+- BeautifulSoup4 for web scraping
+- Uvicorn server
 
-    - cd ResearchFinder/backend
-    - python -m venv venv
-    - venv/Scripts/activate  # For Windows
+### Frontend
+- React.js with TypeScript
+- Material-UI components
+- Axios for API communication
 
-    - Create a requirements.txt
-        fastapi
-        uvicorn
-        beautifulsoup4
-        requests
+## Installation
 
-    - pip install -r requirements.txt
+### Prerequisites
+- Python 3.8 or higher
+- Node.js 14 or higher
+- Git
 
-### 2.2 Write Backend Code
-    - Create an app.py file for your API. Start by defining the endpoints /subjects, /search, etc., using the FastAPI code
+### Backend Setup
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
 
-## Step 3: Run the Backend
-    1. Create a New Python File (app.py or main.py)
-        - python app.py
-    2. Define the API Endpoints in app.py
-    3. Run the FastAPI App
-        - uvicorn app:app --reload
-    4. Add Database Setup 
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   # Windows
+   venv\Scripts\activate
+   # Linux/Mac
+   source venv/bin/activate
+   ```
 
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-## Step 4: Frontend Website
-    1. Navigate to the frontend folder:
-        - cd ../frontend
-    2. Initialize React.js Project: Use Create React App or Vite for simplicity:
-        - npx create-react-app .
-    3. Start Development Server:
-        - npm start
-    4. Connect Frontend to Backend: Use Axios to call the backend API and display results.  
-     For example:
+4. Start the backend server:
+   ```bash
+   uvicorn app:app --reload
+   ```
+   The API will be available at `http://localhost:8000`
 
+### Frontend Setup
+1. Navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
 
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+   The application will be available at `http://localhost:5173`
 
+## API Documentation
 
+### Search Endpoint
+- **URL**: `/api/search`
+- **Method**: `GET`
+- **Query Parameters**:
+  - `query` (string): Search term
+  - `start_year` (number, optional): Start year for filtering (default: 2024)
+  - `end_year` (number, optional): End year for filtering (default: 2025)
+  - `max_results` (number, optional): Maximum number of results (default: 10)
+- **Response**: Array of paper objects containing title, URL, and abstract
 
+## Usage Guide
 
+1. **Search for Papers**:
+   - Enter keywords in the search bar
+   - Adjust filters if needed (year range, number of results)
+   - Click the search button
+
+2. **View Results**:
+   - Browse through the list of papers
+   - Click "Show Abstract" to view paper abstracts
+   - Click on paper titles to visit the source URL
+
+## Contributing
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/improvement`)
+3. Make your changes
+4. Commit your changes (`git commit -am 'Add new feature'`)
+5. Push to the branch (`git push origin feature/improvement`)
+6. Create a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
